@@ -1,0 +1,35 @@
+### Example Config File for MPS-SIM ###
+
+[Arguments]
+# Enter the number of datasets to simulate:
+datasets: 1
+# Enter the number of loci to simulate per dataset:
+genes: 100
+# Enter the length of each locus:
+seq_length: 64
+# Enter the per-site theta value to scale trees for seq-gen:
+theta_seqgen: 0.001
+# Is an outgroup being simulated (see readme for instructions)?
+outgroup: False
+# Enter the maximum allowed number of SNPs per locus (for sim_gbs_snps.py only)
+snp_max: 1
+#Enter the ms command:
+ms: 16 1 -T -t 0.4 -I 2 8 8 0.2 -ej 0.4 2 1
+
+[Output]
+# Enter the output directory:
+out_dir: /Users/michaelharvey/Documents/mps-sim_output/
+# Write an output file with summary statistics?
+summary: True
+# Write a nexus alignment for each locus?
+nexus: True
+# Write a Nexus alignment of all SNPs concatenated?
+nexus_all: True
+# Write a Nexus alignment of one random SNP per locus concatenated?
+nexus_one: True
+# Write a hapmap genotype file with one random SNP per locus?
+hapmap: True
+# Write a frequency spectrum for dadi (Gutenkunst et al. 2009) with one random SNP per locus?
+dadi: True
+# Write an input file for G-PhoCS (Gronau et al. 2011)
+gphocs: True
