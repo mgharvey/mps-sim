@@ -14,7 +14,7 @@ Citation
 
 If you use this documentation or the mps-sim software for your own research, please cite:
 
-citation forthcoming
+Harvey, M. G., B. T. Smith, T. C. Glenn, B. C. Faircloth, and R. T. Brumfield. 2013. Sequence capture versus restriction site associated DNA sequencing for phylogeography. arXiv:1312.6439.
 
 Please also provide the link to this software repository in your manuscript:
 
