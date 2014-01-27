@@ -61,16 +61,16 @@ The following pieces of information should be provided (see Config_file_example.
 - length of loci 
 
 - per-site theta value for seq-gen
-This scales trees before simulating sequence data. See the seq-gen manual for details.
+-- This scales trees before simulating sequence data. See the seq-gen manual for details.
 
 - is an outgroup being included (see "ms command string" below for details)? 
 
-[- maximum number of SNPs/locus (sim_gbs_snps.py only)]
-Most pipelines for GBS data set a maximum number of SNPs. Loci above this threshold are removed 
+- maximum number of SNPs/locus (sim_gbs_snps.py only)
+-- Most pipelines for GBS data set a maximum number of SNPs. Loci above this threshold are removed 
 because they are more likely to contain paralogous sequences.
 
 - ms command string 
-The number of loci in the command must be 1. If you would like to include outgroup information (e.g. 
+-- The number of loci in the command must be 1. If you would like to include outgroup information (e.g. 
 for rooting trees or polarizing SNPs in the AFS), make sure the LAST POPULATION in the ms command 
 comprises two haplotypes and diverges first (ie. coalesces last). If you would like to generate 
 unphased diploid input files for G-PhoCS, all populations must have an even number of samples equal 
