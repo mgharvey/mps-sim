@@ -25,7 +25,7 @@ Dependencies
 
 This list may be incomplete.
 
-- `ms (Hudson 2002) <http://home.uchicago.edu/~rhudson1/source/mksamples.html>`_
+- [ms (Hudson 2002)](http://home.uchicago.edu/~rhudson1/source/mksamples.html)
 - `seq-gen (Rambaut and Grass 1997) <http://tree.bio.ed.ac.uk/software/seqgen/>`_
 - `BioPython (Cock et al. 2009) <http://biopython.org/wiki/Main_Page>`_
 
