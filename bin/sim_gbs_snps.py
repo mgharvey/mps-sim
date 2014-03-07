@@ -80,8 +80,8 @@ def interpret_ms(ms, seq_length, outgroup):
 		new_command_list.append(" ")
 	new_command_string = ''.join(new_command_list)
 	return new_command_string, pop_sizes, h, ntax, p
-	
-	
+
+
 def create_output(out_dir):
 	# Create directories to which output files will be written
 	outdir = ("{0}".format(out_dir)) # output directory
@@ -99,17 +99,17 @@ def add_zeros(out_dir):
 	f1 = open("{0}tmp/seq-gen_output".format(out_dir), 'r')
 	f2 = open("{0}tmp/seq-gen_output_reformatted".format(out_dir), 'wb')
 	for line in f1:
-		line = re.sub(r"^1         ", "01 ", line)
-		line = re.sub(r"^2         ", "02 ", line)
-		line = re.sub(r"^3         ", "03 ", line)
-		line = re.sub(r"^4         ", "04 ", line)
-		line = re.sub(r"^5         ", "05 ", line)
-		line = re.sub(r"^6         ", "06 ", line)
-		line = re.sub(r"^7         ", "07 ", line)
-		line = re.sub(r"^8         ", "08 ", line)
-		line = re.sub(r"^9         ", "09 ", line)
-		line = re.sub("        ", " ", line)		
-		f2.write(line)
+		parts = line.split()
+		if len(parts[0]) == 1:
+			new = "000{0}".format(parts[0])
+		elif len(parts[0]) == 2:
+			new = "00{0}".format(parts[0])
+		elif len(parts[0]) == 3:
+			new = "0{0}".format(parts[0])
+		elif len(parts[0]) == 4:
+			new = "{0}".format(parts[0])
+		new_line = "{0} {1}\n".format(new, parts[1])	
+		f2.write(new_line)
 	f1.close()
 	f2.close()
 
@@ -149,7 +149,7 @@ def check_biallelic(outdir, seq_length, outgroup):
 		if len(uniqs) == 2: # only include biallelic SNPs
 			bsnps += 1
 	return poly, bsnps
-			
+
 
 def write_nexus(outdir, l, ntax, seq_length, p, pop_sizes):				
 	# Export Nexus alignments of all loci	
@@ -184,10 +184,10 @@ def write_nexus(outdir, l, ntax, seq_length, p, pop_sizes):
 			l2 = (lines[rr2-1]) 
 			i += 1
 			k += 2							
-			o = 3
+			o = 5
 			nf.write("\tInd_{0}\t".format(i)) # write taxon name and sequence
-			# Start loop to unphase haplotypes
-			while o < (int(seq_length)+3): # for each base
+			# Start loop to unphase haplotypes		
+			while o < (int(seq_length)+5): # for each base
 				if l1[o] == "A":
 					if l2[o] == "A":
 						nf.write("A")
@@ -268,8 +268,8 @@ def write_nexus_concat(samples, alignment, dataset_dir, output):
 	ff.write(";\n")
 	ff.write("End;\n")
 	ff.close()			
-		
-		
+
+
 def extract_SNPs(dataset_dir, outgroup):			
 	cat_align = list()
 	cat_all_align = list()
@@ -324,8 +324,8 @@ def write_summary(dataset_dir, ms, genes, seq_length, outgroup, poly, par, inv):
 		sf.write("number of loci filtered out due to too many polymorphisms: {0}\n".format(par))
 		sf.write("number of loci filtered because they were invariant: {0}\n".format(inv))
 	sf.close()
-	
-	
+
+
 def write_hapmap(dataset_dir, samples, alignment):
 	biall = 0
 	hf = open("{0}hapmap.hmp.txt".format(dataset_dir), 'wb')
